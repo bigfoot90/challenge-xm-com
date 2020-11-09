@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
+>
+    <entity name="Domain\Models\Entity\Account">
+        <id name="id" type="uuid_binary"/>
+        <one-to-one field="chef" target-entity="Domain\Models\Entity\Chef" mapped-by="account"/>
+        <field name="emailAddress"/>
+        <field name="password"/>
+        <field name="roles" type="simple_array" nullable="true"/>
+
+        <field name="createdAt" type="datetime_immutable"/>
+        <field name="updatedAt" type="datetime_immutable"/>
+    </entity>
+</doctrine-mapping>

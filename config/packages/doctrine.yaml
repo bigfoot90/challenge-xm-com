@@ -1,0 +1,23 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        types:
+            uuid_binary: Infrastructure\Persistence\Types\IdBinaryType
+    orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: false
+        mappings:
+            entity:
+                type: xml
+                prefix: Domain\Models\Entity
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Mappings/Entity'
+                is_bundle: false
+#            value_object:
+#                type: xml
+#                prefix: Domain\Models\ValueObject
+#                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Mappings/ValueObject'
+#                is_bundle: false

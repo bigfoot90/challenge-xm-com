@@ -1,0 +1,11 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+controllers:
+  resource: ../src/Infrastructure/Controllers/
+  type: annotation
+
+kernel:
+  resource: ../src/Infrastructure/Kernel.php
+  type: annotation

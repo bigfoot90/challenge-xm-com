@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
+    xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+>
+    <entity name="Domain\Models\Entity\CookingStep">
+        <id name="id" type="uuid_binary"/>
+        <many-to-one field="recipe" target-entity="Domain\Models\Entity\Recipe" inversed-by="steps">
+            <join-column nullable="false" on-delete="CASCADE"/>
+        </many-to-one>
+        <field name="position" type="integer">
+            <gedmo:sortable-position groups="recipe"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
+        <field name="procedure" type="text"/>
+        <one-to-many field="ingredients" target-entity="Domain\Models\Entity\IngredientQuantity" mapped-by="cookingStep" orphan-removal="true">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+    </entity>
+</doctrine-mapping>

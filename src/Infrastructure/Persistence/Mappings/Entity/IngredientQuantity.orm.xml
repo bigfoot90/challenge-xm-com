@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
+>
+    <entity name="Domain\Models\Entity\IngredientQuantity">
+        <id name="cookingStep" association-key="true" />
+        <id name="ingredient" association-key="true" />
+        <many-to-one field="cookingStep" target-entity="Domain\Models\Entity\CookingStep" inversed-by="ingredients">
+            <join-column nullable="false" on-delete="CASCADE"/>
+        </many-to-one>
+        <many-to-one field="ingredient" target-entity="Domain\Models\Entity\Ingredient">
+            <join-column nullable="false"/>
+        </many-to-one>
+        <field name="quantity" type="integer">
+            <options>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
+        <field name="unit" type="string"/>
+    </entity>
+</doctrine-mapping>
